@@ -1,0 +1,54 @@
+﻿<Styles
+  xmlns="https://github.com/avaloniaui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:controls="clr-namespace:ControlCatalog.Controls"
+  xmlns:converters="clr-namespace:ControlCatalog.Converters">
+
+  <Styles.Resources>
+    <converters:BoolToBrushConverter x:Key="TestBoolConverter"
+                                     TrueBrush="{DynamicResource ThemeControlHighBrush}"
+                                     FalseBrush="{DynamicResource ThemeControlLowBrush}" />
+  </Styles.Resources>
+
+  <Style Selector="controls|CustomControlSample">
+    <Setter Property="Template">
+
+      <ControlTemplate>
+        <Border Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                Padding="5">
+          <StackPanel Orientation="Vertical">
+
+            <TextBlock Text="CustomControlSample"
+                       Foreground="{DynamicResource ThemeAccentBrush}"
+                       FontSize="{DynamicResource FontSizeLarge}"/>
+
+            <DataValidationErrors>
+              <StackPanel Orientation="Vertical">
+                <TextBlock Text="Empty string converter: enabled" />
+                <Button Background="{DynamicResource ThemeAccentBrush}" Content="Button"
+                        IsEnabled="{TemplateBinding NonEmptyString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+                <TextBlock Text="Empty string converter: disabled" />
+                <Button Background="{DynamicResource ThemeAccentBrush}" Content="Button"
+                        IsEnabled="{TemplateBinding EmptyString, Converter={x:Static StringConverters.IsNotNullOrEmpty}}" />
+
+                <TextBlock Text="Bool converter: true" />
+                <Button Background="{TemplateBinding TrueBool, Converter={StaticResource TestBoolConverter}}"
+                        Content="Button" />
+
+                <TextBlock Text="Bool converter: false" />
+                <Button Background="{TemplateBinding FalseBool, Converter={StaticResource TestBoolConverter}}"
+                        Content="Button" />
+
+              </StackPanel>
+            </DataValidationErrors>
+          </StackPanel>
+        </Border>
+      </ControlTemplate>
+    </Setter>
+  </Style>
+
+</Styles>

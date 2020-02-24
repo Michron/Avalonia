@@ -8,6 +8,7 @@ using ControlCatalog.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Avalonia.Input;
 
 namespace ControlCatalog
 {
@@ -19,7 +20,7 @@ namespace ControlCatalog
         public MainWindow()
         {
             this.InitializeComponent();
-            this.AttachDevTools();
+            this.AttachDevTools(new KeyGesture(Key.F8));
             //Renderer.DrawFps = true;
             //Renderer.DrawDirtyRects = Renderer.DrawFps = true;
 

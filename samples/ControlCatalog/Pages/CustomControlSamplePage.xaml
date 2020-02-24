@@ -1,0 +1,23 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ControlCatalog.Pages.CustomControlSamplePage"
+             xmlns:controls="clr-namespace:ControlCatalog.Controls">
+
+  <StackPanel Orientation="Vertical" Spacing="4">
+    <TextBlock Classes="h1">CustomControlSample</TextBlock>
+    <TextBlock Classes="h2">A custom control to showcase a bug with converters in styles.</TextBlock>
+      <StackPanel Orientation="Vertical"
+                  Margin="0,16,0,0"
+                  HorizontalAlignment="Center"
+                  Spacing="8">
+
+        <TextBlock Text="Custom control:"/>
+
+        <controls:CustomControlSample 
+          Background="{DynamicResource ThemeBackgroundBrush}"
+          BorderBrush="{DynamicResource ThemeBorderLowBrush}"
+          BorderThickness="1" />
+
+      </StackPanel>
+  </StackPanel>
+</UserControl>
